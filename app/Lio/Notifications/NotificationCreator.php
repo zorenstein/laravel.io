@@ -12,8 +12,8 @@ class NotificationCreator
 
     public function create($message, $model, $user, $push = false)
     {
-
-        $message = "New reply to your thread: {$model->title}";
+        // Temp
+        $message = "New reply to your thread: {$model->title} by {$model->author->name}";
 
         $notification = $this->notifications->getNew();
         $notification->message = $message;
