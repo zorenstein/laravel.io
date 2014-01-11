@@ -18,10 +18,9 @@
   <div class="top-header">
     @include('layouts._top_nav')
   </div>
-
+@include('layouts._flash')
 
   <div class="holder">
-      @include('layouts._flash')
      <div class="table">
         {{ $content }}
       </div>
@@ -40,7 +39,7 @@
         var channel = pusher.subscribe('{{ Auth::user()->getPusherChannel() }}');
 
         channel.bind('message', function(data) {
-          $('.top-header').after(data.message).fadeIn();
+          $('.top-header').after(data.message);
         });
 
       </script>
