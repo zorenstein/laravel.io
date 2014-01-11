@@ -32,7 +32,19 @@
 @include('layouts._footer')
 
   @section('scripts')
-  	<script src="{{ asset('javascripts/vendor/jquery.min.js') }}"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://js.pusher.com/2.1/pusher.min.js"></script>
+    @if(Auth::user())
+      <script>
+        var pusher = new Pusher('9d40e080af48b3a2afd4');
+        var channel = pusher.subscribe('{{ Auth::user()->getPusherChannel() }}');
+
+        channel.bind('message', function(data) {
+          $('.top-header').after(data.message).fadeIn();
+        });
+
+      </script>
+    @endif
   @show
 </body>
 </html>

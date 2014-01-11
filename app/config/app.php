@@ -124,6 +124,8 @@ return array(
 		'Lio\ServiceProviders\CommentServiceProvider',
 		'Lio\ServiceProviders\ForumServiceProvider',
 		'Lio\ServiceProviders\MarkdownServiceProvider',
+		'Lio\ServiceProviders\PusherIoServiceProvider',
+		'Lio\ServiceProviders\HashidsServiceProvider',
 	),
 
 	/*

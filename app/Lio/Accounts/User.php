@@ -3,7 +3,7 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Lio\Core\EloquentBaseModel;
-use Eloquent;
+use App, Eloquent;
 
 class User extends EloquentBaseModel implements UserInterface, RemindableInterface
 {
@@ -136,5 +136,10 @@ class User extends EloquentBaseModel implements UserInterface, RemindableInterfa
     public function getLatestRepliesPaginated($max = 5)
     {
         return $this->forumReplies()->paginate($max);
+    }
+
+    public function getPusherChannel()
+    {
+        return App::make('hashids')->encrypt($this->id);
     }
 }

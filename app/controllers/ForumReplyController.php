@@ -71,6 +71,8 @@ class ForumReplyController extends BaseController implements
     {
         $thread = App::make('slugModel');
 
+        \App::make('Lio\Notifications\NotificationCreator')->create('test message', $thread, $thread->author, true);
+
         return App::make('Lio\Forum\ForumReplyCreator')->create($this, [
             'body'      => Input::get('body'),
             'author_id' => Auth::user()->id,
