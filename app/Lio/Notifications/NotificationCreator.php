@@ -10,7 +10,7 @@ class NotificationCreator
         $this->notificationPusher = $pusher;
     }
 
-    public function create($message, $model, $user, $push = false)
+    public function create($message, $model, $user, $pushToOwner = false)
     {
         // Temp
         $message = "New reply to your thread: {$model->title} by {$model->author->name}";
@@ -23,7 +23,7 @@ class NotificationCreator
 
         $notification->save();
 
-        if($push) {
+        if($pushToOwner) {
             $this->notificationPusher->push($message, $notification->url, $user);
         }
     }

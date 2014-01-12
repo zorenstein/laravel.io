@@ -29,6 +29,11 @@ class User extends EloquentBaseModel implements UserInterface, RemindableInterfa
         return $this->hasMany('Lio\Articles\Article', 'author_id');
     }
 
+    public function notifications()
+    {
+        return $this->hasMany('Lio\Notifications\Notification');
+    }
+
     // Roles
     public function roles()
     {

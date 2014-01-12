@@ -45,6 +45,8 @@ class ForumReplyCreator
         // cache new thread update timestamps
         $this->countManager->cacheSections();
 
+        \App::make('Lio\Notifications\NotificationCreator')->create('New reply to your thread', $reply, $reply->author, true);
+
         return $observer->forumReplyCreated($reply);
     }
 }
